@@ -24,7 +24,6 @@ The interop services are divided on two categories: Standard Services and Neo Se
 | `Neo.Blockchain.GetAccount`          |   100 |   |  |  |
 | `Neo.Blockchain.GetValidators` |  200 |   |  |  |
 | `Neo.Blockchain.GetAsset` |  100 |   |  |  |
-| `Neo.Blockchain.GetContract` |   100 |   |  |  |
 | `Neo.Header.GetHash` |   1 |   |  |  |
 | `Neo.Header.GetVersion` |   1 |   |  |  |
 | `Neo.Header.GetPrevHash` |   1 |   |  |  |
@@ -93,6 +92,15 @@ The interop services are divided on two categories: Standard Services and Neo Se
 | `Neo.Iterator.Value` |  1 |   |  |  |
 
 
+### Cross-Service Mappings (2.X)
+| Neo Service | Standard Service | AntShares Service |
+|-------------|------------------|-------------------|
+| `Neo.Blockchain.GetContract` | `Standard.Blockchain.GetContract` | N.A. |
+
+
+
+
+
 ## Standard Services (Neo 2.x)
 
 | Name                                 | Price    | Description                              | Inputs | Outputs |
@@ -114,7 +122,7 @@ The interop services are divided on two categories: Standard Services and Neo Se
 | `System.Blockchain.GetBlock` |   200|    |  |  |
 | `System.Blockchain.GetTransaction` |   200|    |  |  |
 | `System.Blockchain.GetTransactionHeight` |   100|    |  |  |
-| `System.Blockchain.GetContract` |   100|    |  |  |
+| `System.Blockchain.GetContract` | 100 | Passes contract scripthash and retrieves Contract (or null). | UInt160 | ContractState as InteropInterface |
 | `System.Header.GetIndex` |   1|    |  |  |
 | `System.Header.GetHash` |   1|    |  |  |
 | `System.Header.GetPrevHash` |   1|    |  |  |
