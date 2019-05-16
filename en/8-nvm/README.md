@@ -1,11 +1,14 @@
  - NVM
 	- What is NEO VM
 	- The Neo virtual machine architecture
-	- The NVM Instruction Set
-		- Arithmatic operation
+	- The NVM Instruction Set (Neo 2.X)
+		- Arithmetic operation
 		- Stack operations
 		- System operations
 		- Logic operations
 		- Environmental operations
 		- Block operations
 	- Gas Consumption During Execution
+   - Interoperable Services
+      - Standard Service (Neo 2.X)
+      - Neo Service (Neo 2.X)
