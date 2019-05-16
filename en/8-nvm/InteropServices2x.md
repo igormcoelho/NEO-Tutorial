@@ -122,7 +122,7 @@ The interop services are divided on two categories: Standard Services and Neo Se
 | `System.Blockchain.GetBlock` |   200|    |  |  |
 | `System.Blockchain.GetTransaction` |   200|    |  |  |
 | `System.Blockchain.GetTransactionHeight` |   100|    |  |  |
-| `System.Blockchain.GetContract` | 100 | Passes contract scripthash and retrieves Contract (or null). | UInt160 | ContractState as InteropInterface |
+| `System.Blockchain.GetContract` | 100 | Passes contract scripthash and retrieves Contract (or null). | `UInt160` | `ContractState` as `InteropInterface` [C# Example](#blockchain_getcontract) |
 | `System.Header.GetIndex` |   1|    |  |  |
 | `System.Header.GetHash` |   1|    |  |  |
 | `System.Header.GetPrevHash` |   1|    |  |  |
@@ -140,3 +140,34 @@ The interop services are divided on two categories: Standard Services and Neo Se
 | `System.Storage.PutEx`                 | * |    |  |  |
 | `System.Storage.Delete`                |   100|    |  |  |
 | `System.StorageContext.AsReadOnly`     |   1|    |  |  |
+
+## Coding Examples (C#)
+
+### Blockchain_GetContract
+
+```cs
+using Neo.SmartContract.Framework.Services.Neo;
+using Neo.SmartContract.Framework;
+using Neo.VM;
+
+namespace Neo.SmartContract {
+    public static class HelperExternal {
+        // INFO: InteropInterface result will be interpreted as Boolean
+        [Syscall("Neo.Blockchain.GetContract")]
+        public static extern bool GetContract(byte[] scripthash);
+	}
+    public class GetHelloWorld : Framework.SmartContract {
+        static readonly byte[] ContractHelloWorld = "d741527ea66813c0c50e78bb403926b4c88a64c4".HexToBytes();
+
+        public static bool Main() {
+            bool contract = HelperExternal.GetContract(ContractHelloWorld);
+            if(contract)
+                Runtime.Notify("FOUND!");
+            else
+                Runtime.Notify("NOT FOUND!");
+
+            return contract; // bool or InteropInterface
+        }
+    }
+}
+```
