@@ -8,7 +8,9 @@
 		- Logic operations
 		- Environmental operations
 		- Block operations
+		- Changes for NVM 3.X
 	- Gas Consumption During Execution
-   - Interoperable Services
+    - Interoperable Services
       - Standard Service (Neo 2.X)
       - Neo Service (Neo 2.X)
+	  - Changes for Neo 3.X
